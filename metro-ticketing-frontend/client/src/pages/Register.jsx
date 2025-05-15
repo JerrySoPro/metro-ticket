@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { registerUser } from '../services/authService';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../components/Register.css';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -8,35 +9,81 @@ const Register = () => {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
-    phone: ''
+    phone: '',
+    password: ''
   });
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+    setError('');
+
     try {
-      await registerUser(form);
-      alert('Registration successful!');
+      await axios.post('/api/auth/register', form);
+      alert('Registration successful! Please log in.');
       navigate('/login');
     } catch (err) {
-      alert(err.response?.data?.error || 'Registration failed.');
+      setError(err.response?.data?.error || 'Registration failed.');
     }
   };
 
   return (
-    <div style={{ marginTop: '50px', textAlign: 'center' }}>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit} style={{ display: 'inline-block', textAlign: 'left' }}>
-        <div><input type="text" name="firstName" placeholder="First Name" required onChange={handleChange} /></div>
-        <div><input type="text" name="lastName" placeholder="Last Name" required onChange={handleChange} /></div>
-        <div><input type="email" name="email" placeholder="Email" required onChange={handleChange} /></div>
-        <div><input type="tel" name="phone" placeholder="Phone" required onChange={handleChange} /></div>
-        <div><input type="password" name="password" placeholder="Password" required onChange={handleChange} /></div>
-        <div><button type="submit">Register</button></div>
+    <div className="register-container">
+      <form className="register-card" onSubmit={handleRegister}>
+        <h2>Create Account</h2>
+
+        {error && <p className="register-error">{error}</p>}
+
+        <input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={form.firstName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={form.lastName}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Phone"
+          value={form.phone}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={form.password}
+          onChange={handleChange}
+          required
+        />
+
+        <button type="submit">Register</button>
+
+        <p className="register-footer">
+          Already have an account? <a href="/login">Login</a>
+        </p>
       </form>
     </div>
   );

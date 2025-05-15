@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { getProfile } from '../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const [profile, setProfile] = useState(null);
@@ -11,86 +11,51 @@ const Home = () => {
       try {
         const res = await getProfile();
         setProfile(res.data);
-      } catch (err) {
+      } catch {
         setProfile(null);
       }
     };
-
     fetchData();
   }, []);
 
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    setProfile(null);
-    navigate('/');       
-  };
-
-
   return (
-    <div>
-      {/* ✅ Navigation Bar */}
-      <nav style={{
-  background: '#f0f0f0',
-  padding: '15px 25px',
-  borderBottom: '1px solid #ccc',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between'
-}}>
-  {/* Left side links */}
-  <div style={{ display: 'flex', gap: '20px' }}>
-    <Link to="/">Home</Link>
-    {!profile && (
-      <>
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
-      </>
-    )}
-  </div>
+    <div style={{ padding: '40px', maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
+      <h1 style={{ fontSize: '2.8rem', marginBottom: '10px' }}>🚇 Metro Ticket System</h1>
+      <p style={{ fontSize: '1.2rem', color: '#555' }}>Roam around dhaka without any hassle</p>
 
-  {/* Right side balance + logout */}
-  {profile && (
-    <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-        <span>
-            <strong>Balance:</strong> <span style={{ color: 'green', fontWeight: 'bold' }}>৳{profile.balance}</span>
-        </span>
-      <button
-        onClick={handleLogout}
-        style={{
-          background: 'crimson',
-          color: 'white',
-          border: 'none',
-          padding: '6px 12px',
-          cursor: 'pointer'
-        }}
-      >
-        Logout
-      </button>
-    </div>
-  )}
-</nav>
+      {profile ? (
+        <div style={{ marginTop: '40px', background: '#f9f9f9', padding: '30px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+          <h2>Welcome, {profile.firstName} {profile.lastName}</h2>
+          {/* <p><strong>Email:</strong> {profile.email}</p>
+          <p><strong>Phone:</strong> {profile.phone}</p>
+          <p><strong>Role:</strong> {profile.role}</p> */}
+          <p><strong>Available Balance:</strong> <span style={{ color: 'green', fontWeight: 'bold' }}>৳{profile.balance}</span></p>
 
-
-
-      {/* ✅ Main Content */}
-      <div style={{ textAlign: 'center', marginTop: '80px' }}>
-        <h1>🚇 Metro Ticket App is Running!</h1>
-        <p>Welcome to the Metro Ticket System.</p>
-
-        {profile ? (
-          <div>
-            <h3><strong>Welcome, {profile.firstName} {profile.lastName}</strong></h3>
-            <p>Email: {profile.email}</p>
-            <p>Phone: {profile.phone}</p>
-            <p>Role: {profile.role}</p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '25px' }}>
+            <button onClick={() => navigate('/add-balance')} style={btnStyle}>💳 Add Balance</button>
+            <button onClick={() => navigate('/topup-history')} style={btnStyle}>📜 Top-Up History</button>
+            <button onClick={() => navigate('/book')} style={btnStyle}>🎫 Book Tickets</button>
           </div>
-        ) : (
-          <p><em>You are not logged in.</em></p>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div style={{ marginTop: '40px' }}>
+          <p style={{ fontSize: '1.1rem' }}><em>You are not logged in.</em></p>
+          <button onClick={() => navigate('/login')} style={btnStyle}>🔐 Login</button>
+        </div>
+      )}
     </div>
   );
+};
+
+const btnStyle = {
+  padding: '12px 24px',
+  backgroundColor: '#007BFF',
+  color: '#fff',
+  border: 'none',
+  borderRadius: '6px',
+  fontSize: '1rem',
+  cursor: 'pointer',
+  transition: 'all 0.2s ease-in-out'
 };
 
 export default Home;

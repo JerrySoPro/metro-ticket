@@ -1,0 +1,65 @@
+.history-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3f5f9;
+}
+
+.history-card {
+  background: white;
+  padding: 35px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.history-card h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.history-error {
+  color: crimson;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.history-empty {
+  color: #666;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.amount {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.date {
+  color: #777;
+  font-size: 0.85rem;
+}

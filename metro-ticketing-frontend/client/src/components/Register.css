@@ -1,0 +1,78 @@
+.register-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f8fa;
+}
+
+.register-card {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  width: 360px;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.register-card h2 {
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.register-card input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border 0.3s;
+}
+
+.register-card input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.register-card button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 16px;
+  font-size: 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.register-card button:hover {
+  background: #0056b3;
+}
+
+.register-footer {
+  margin-top: 18px;
+  font-size: 0.9rem;
+}
+
+.register-footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.register-footer a:hover {
+  text-decoration: underline;
+}
+
+.register-error {
+  color: crimson;
+  font-size: 0.9rem;
+  margin-top: -8px;
+  margin-bottom: 12px;
+}

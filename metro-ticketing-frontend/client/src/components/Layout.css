@@ -1,0 +1,164 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  padding: 20px;
+}
+
+
+body.light {
+  background: #ffffff;
+  color: #222;
+}
+
+body.dark {
+  background: #1e1e1e;
+  color: #f1f1f1;
+}
+
+/* NAVIGATION */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 14px 28px;
+  border-bottom: 1px solid #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+body.dark .navbar {
+  background: #2b2b2b;
+  border-color: #444;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+.navbar-right a,
+.dropdown-toggle,
+.theme-toggle {
+  margin-left: 18px;
+  text-decoration: none;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+body.dark .navbar-right a,
+body.dark .dropdown-toggle,
+body.dark .theme-toggle {
+  color: #f0f0f0;
+}
+
+.navbar-right a:hover,
+.dropdown-toggle:hover,
+.theme-toggle:hover {
+  color: #0077cc;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
+  min-width: 170px;
+  z-index: 200;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .dropdown-menu {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+.dropdown-menu a,
+.logout-btn {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+body.dark .dropdown-menu a,
+body.dark .logout-btn {
+  color: #f0f0f0;
+}
+
+.dropdown-menu a:hover,
+.logout-btn:hover {
+  background: #f0f0f0;
+}
+
+body.dark .dropdown-menu a:hover,
+body.dark .logout-btn:hover {
+  background: #444;
+}
+
+/* MAIN */
+.main-content {
+  padding: 40px;
+  min-height: 80vh;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  background: #f8f8f8;
+  border-top: 1px solid #ccc;
+}
+
+body.dark .footer {
+  background: #1e1e1e;
+  color: #aaa;
+  border-color: #444;
+}
+
+.balance-badge {
+  margin-right: 18px;
+  padding: 6px 12px;
+  background-color: #e0f7e9;
+  color: #006c3e;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  border: 1px solid #b5dfc9;
+}

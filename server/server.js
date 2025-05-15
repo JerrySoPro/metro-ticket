@@ -7,7 +7,7 @@ import userRoutes from './routes/userRoutes.js';
 
 
 dotenv.config();
-
+const userRoutes = require('./routes/userRoutes');
 const app = express();
 app.use(cors());
 app.use(express.json());
