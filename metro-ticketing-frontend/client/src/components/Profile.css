@@ -70,3 +70,8 @@
   color: #a33a3a;
   border: 1px solid #f5bcbc;
 }
+
+.profile-card h4 {
+  margin-top: 20px;
+  color: #333;
+}

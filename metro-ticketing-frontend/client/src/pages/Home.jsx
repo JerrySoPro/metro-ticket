@@ -31,11 +31,13 @@ const Home = () => {
           <p><strong>Role:</strong> {profile.role}</p> */}
           <p><strong>Available Balance:</strong> <span style={{ color: 'green', fontWeight: 'bold' }}>৳{profile.balance}</span></p>
 
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginTop: '25px' }}>
-            <button onClick={() => navigate('/add-balance')} style={btnStyle}>💳 Add Balance</button>
-            <button onClick={() => navigate('/topup-history')} style={btnStyle}>📜 Top-Up History</button>
-            <button onClick={() => navigate('/book')} style={btnStyle}>🎫 Book Tickets</button>
-          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '20px', marginTop: '25px' }}>
+  <button onClick={() => navigate('/add-balance')} style={btnStyle}>💳 Add Balance</button>
+  <button onClick={() => navigate('/entry-pass')} style={btnStyle}>🚇 Metro Entry Pass</button>
+  <button onClick={() => navigate('/topup-history')} style={btnStyle}>📜 Top-Up History</button>
+  <button onClick={() => navigate('/train-status')} style={btnStyle}>🚦 Train Status</button>
+  <button onClick={() => navigate('/fare-calculator')} style={btnStyle}>💰 Fare Checker</button>
+</div>
         </div>
       ) : (
         <div style={{ marginTop: '40px' }}>

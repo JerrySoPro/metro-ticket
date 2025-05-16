@@ -64,7 +64,8 @@ const Layout = ({ children }) => {
 
                   <Link to="/add-balance">💳 Add Balance</Link>
                   <Link to="/topup-history">📜 Top-Up History</Link>
-                  <Link to="/tickets">🎫 Book Tickets</Link>
+                  <Link to="/fare-calculator">💰 Fare Checker</Link>
+                  <Link to="/train-status">🚦 Train Status</Link>
                   <button onClick={handleLogout} className="logout-btn">🚪 Logout</button>
                 </div>
               )}
@@ -76,7 +77,7 @@ const Layout = ({ children }) => {
       <main className="main-content">{children}</main>
 
       <footer className="footer">
-        <p>Built with ❤️ by Metro Dev Team • © {new Date().getFullYear()}</p>
+        <p>Built with ❤️ by N-1 Team • © {new Date().getFullYear()}</p>
       </footer>
     </>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../components/Profile.css'; 
 
+
 const Profile = () => {
   const [form, setForm] = useState({
     firstName: '',
@@ -23,6 +24,7 @@ const Profile = () => {
           email: res.data.email,
           phone: res.data.phone
         });
+        
       } catch {
         setMessage({ type: 'error', text: 'Failed to load profile' });
       }
@@ -48,6 +50,7 @@ const Profile = () => {
 
   return (
     <div className="profile-container">
+      
       <form className="profile-card" onSubmit={handleUpdate}>
         <h2>👤 Update Profile</h2>
 

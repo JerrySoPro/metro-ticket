@@ -18,7 +18,7 @@ const AddBalance = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      setMessage({ type: 'success', text: '✅ Balance added successfully!' });
+      setMessage({ type: 'success', text: `✅ ৳${amount} added successfully!` });
       setAmount('');
     } catch (err) {
       setMessage({
