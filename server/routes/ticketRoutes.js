@@ -1,9 +1,8 @@
-
-const router = express.Router();
-
 import express from 'express';
 import authMiddleware from '../middleware/authMiddleware.js';
+import Ticket from '../models/Ticket.js';  // Add this import
 
+const router = express.Router();
 
 router.post('/book', authMiddleware, async (req, res) => {
   try {

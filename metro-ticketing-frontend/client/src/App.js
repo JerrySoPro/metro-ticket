@@ -1,5 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import TopLayout from './components/TopLayout';
+
+// Import your existing pages
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -9,23 +12,27 @@ import Profile from './pages/Profile';
 import TrainStatus from './pages/TrainStatus';
 import FareCalculator from './pages/FareCalculator';
 import EntryPass from './pages/EntryPass';
-
-
+import { UserProvider } from './contexts/UserContext';
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout><Home /></Layout>} />
-      <Route path="/login" element={<Layout><Login /></Layout>} />
-      <Route path="/register" element={<Layout><Register /></Layout>} />
-      <Route path="/add-balance" element={<Layout><AddBalance /></Layout>} />
-      <Route path="/topup-history" element={<Layout><TopupHistory /></Layout>} />
-      <Route path="/profile" element={<Layout><Profile /></Layout>} />
-      <Route path="/train-status" element={<Layout><TrainStatus /></Layout>} />
-      <Route path="/fare-calculator" element={<Layout><FareCalculator /></Layout>} />
-      <Route path="/entry-pass" element={<Layout><EntryPass /></Layout>} />
-
-    </Routes>
+    <UserProvider>
+      
+        <TopLayout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/add-balance" element={<AddBalance />} />
+            <Route path="/topup-history" element={<TopupHistory />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/train-status" element={<TrainStatus />} />
+            <Route path="/fare-calculator" element={<FareCalculator />} />
+            <Route path="/entry-pass" element={<EntryPass />} />
+          </Routes>
+        </TopLayout>
+      
+    </UserProvider>
   );
 }
 
